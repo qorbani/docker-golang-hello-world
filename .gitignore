@@ -1,0 +1,30 @@
+#
+#  Mac OSX Files
+#
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+#
+#  Windows Files
+#
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+Desktop.ini
+
+#
+#  Generic
+#
+*.tmp
+
+#
+#  Node.JS
+#
+npm-debug.log*
+node_modules
+jspm_packages
+.npm
+.eslintcache
+.node_repl_history
