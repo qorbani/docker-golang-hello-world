@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region us-east-1)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t 357505600859.dkr.ecr.us-east-1.amazonaws.com/golang:latest .
+      - docker tag 357505600859.dkr.ecr.us-east-1.amazonaws.com/golang:latest 357505600859.dkr.ecr.us-east-1.amazonaws.com/golang:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 357505600859.dkr.ecr.us-east-1.amazonaws.com/golang:$CODEBUILD_RESOLVED_SOURCE_VERSION
